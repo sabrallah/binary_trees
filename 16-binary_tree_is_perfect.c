@@ -1,19 +1,18 @@
 #include "binary_trees.h"
 
-
 /**
- * binary_tree_is_perfect - ggggggggggg
- * @tree: zzzzzzzzzzzzzz
+ * binary_tree_is_perfect - checks if a binary tree is perfect
+ * @tree: a pointer to the root node of the tree to check
  *
- * Return: 1 jjjjjjjjj
- *         0 ihhhhhhhh
- *         0 kkkkkkkkkkkkk
+ * Return: 1 if the tree is perfect
+ *         0 if the tree is not perfect
+ *         0 if tree is NULL
  */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	size_t mheight = 0;
-	size_t mnodes = 0;
-	size_t mpower = 0;
+	size_t height = 0;
+	size_t nodes = 0;
+	size_t power = 0;
 
 	if (!tree)
 		return (0);
@@ -21,37 +20,37 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	if (!tree->right && !tree->left)
 		return (1);
 
-	mheight = binary_tree_height(tree);
-	mnodes = binary_tree_size(tree);
+	height = binary_tree_height(tree);
+	nodes = binary_tree_size(tree);
 
-	mpower = (size_t)m_pow_recursion(2, mheight + 1);
-	return (mpower - 1 == mnodes);
+	power = (size_t)_pow_recursion(2, height + 1);
+	return (power - 1 == nodes);
 }
 
 /**
- *m_pow_recursion - rtttttttttttt
- *@s: thhhhhhhhhhhh
- *@u: thhhhhhhhhhhhh
- *Return: jjjjjjjjjjjjj
+ *_pow_recursion - returns the value of x raised to the power of y
+ *@x: the value to exponentiate
+ *@y: the power to raise x to
+ *Return: x to the power of y, or -1 if y is negative
  */
 
-int m_pow_recursion(int s, int u)
+int _pow_recursion(int x, int y)
 {
-	if (u < 0)
+	if (y < 0)
 		return (-1);
-	if (u == 0)
+	if (y == 0)
 		return (1);
 	else
-		return (s * m_pow_recursion(s, u - 1));
+		return (x * _pow_recursion(x, y - 1));
 
 }
 
 /**
- * binary_tree_size - ooooooooooooooo
- * @tree: kkkkkkkkkkkkkkkk
+ * binary_tree_size - measures the size of a binary tree
+ * @tree: tree to measure the size of
  *
- * Return: shhhhhhhhhhh
- *         0 uuuuuuuuuuuuu
+ * Return: size of the tree
+ *         0 if tree is NULL
  */
 size_t binary_tree_size(const binary_tree_t *tree)
 {
@@ -62,21 +61,21 @@ size_t binary_tree_size(const binary_tree_t *tree)
 }
 
 /**
- * binary_tree_height - moooooooooooooooo
- * @tree: tnnnnnnnnnnnnnnnn
+ * binary_tree_height - measures the height of a binary tree
+ * @tree: tree to measure the height of
  *
- * Return: mhkkkkkkkkkkkkkkkkkk
- *         0 vvvvvvvvvvvvvvv
+ * Return: height of the tree
+ *         0 if tree is NULL
  */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-	size_t height_lef = 0;
-	size_t height_rig = 0;
+	size_t height_l = 0;
+	size_t height_r = 0;
 
 	if (!tree)
 		return (0);
 
-	height_lef = tree->left ? 1 + binary_tree_height(tree->left) : 0;
-	height_rig = tree->right ? 1 + binary_tree_height(tree->right) : 0;
-	return (height_lef > height_rig ? height_lef : height_rig);
+	height_l = tree->left ? 1 + binary_tree_height(tree->left) : 0;
+	height_r = tree->right ? 1 + binary_tree_height(tree->right) : 0;
+	return (height_l > height_r ? height_l : height_r);
 }
