@@ -23,25 +23,25 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	heights = binary_tree_height(tree);
 	nodess = binary_tree_size(tree);
 
-	powers = (size_t)pow_recursion(2, heights + 1);
+	powers = (size_t)_pow_recursion(2, heights + 1);
 	return (powers - 1 == nodess);
 }
 
 /**
- *pow_recursion - aaaaaaaaaaaaaaaaaaa
+ *_pow_recursion - aaaaaaaaaaaaaaaaaaa
  *@x: aaaaaaaaaaaaa
  *@y: aaaaaaaaaaaaaa
  *Return: aaaaaaaaaaaaaaaaaa
  */
 
-int pow_recursion(int x, int y)
+int _pow_recursion(int x, int y)
 {
 	if (y < 0)
 		return (-1);
 	if (y == 0)
 		return (1);
 	else
-		return (x * pow_recursion(x, y - 1));
+		return (x * _pow_recursion(x, y - 1));
 
 }
 
