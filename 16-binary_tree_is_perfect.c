@@ -1,12 +1,12 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_is_perfect - checks tree is perfect
- * @tree: to the root node of the tree to check
+ * binary_tree_is_perfect - aaaaaaaaaaaaaaaa
+ * @tree: aaaaaaaaaaaaaa
  *
- * Return: 1 tree is perfect
- *         0 tree is not perfect
- *         0 is NULL
+ * Return: 1 taaaaaaaaaaaaaaa
+ *         0 aaaaaaaaaaaaaaaaaa
+ *         0 aaaaaaaaaaaaaaaaaa
  */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
@@ -23,34 +23,34 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	heights = binary_tree_height(tree);
 	nodess = binary_tree_size(tree);
 
-	powers = (size_t)_pow_recursion(2, heights + 1);
+	powers = (size_t)pow_recursion(2, heights + 1);
 	return (powers - 1 == nodess);
 }
 
 /**
- *_pow_recursion - value of x raised to the powers of y
- *@x: to exponentiate
- *@y: to raise x to
- *Return: of y, or -1 if y is negative
+ *pow_recursion - aaaaaaaaaaaaaaaaaaa
+ *@x: aaaaaaaaaaaaa
+ *@y: aaaaaaaaaaaaaa
+ *Return: aaaaaaaaaaaaaaaaaa
  */
 
-int _pow_recursion(int x, int y)
+int pow_recursion(int x, int y)
 {
 	if (y < 0)
 		return (-1);
 	if (y == 0)
 		return (1);
 	else
-		return (x * _pow_recursion(x, y - 1));
+		return (x * pow_recursion(x, y - 1));
 
 }
 
 /**
- * binary_tree_size - size of a binary tree
- * @tree: tree the size of
+ * binary_tree_size - aaaaaaaaaaaaaaa
+ * @tree: aaaaaaaaaaaaaaaaaa
  *
- * Return: size  tree
- *         0 if tree is NULL
+ * Return: aaaaaaaaaaaaaaaaaa
+ *         0 aaaaaaaaaaaaaaaa
  */
 size_t binary_tree_size(const binary_tree_t *tree)
 {
@@ -61,11 +61,11 @@ size_t binary_tree_size(const binary_tree_t *tree)
 }
 
 /**
- * binary_tree_height - heights of a binary tree
- * @tree: measure the heights of
+ * binary_tree_height - aaaaaaaaaaaaaaaaaaa
+ * @tree: aaaaaaaaaaaaaaaaaaaaa
  *
- * Return: of the tree
- *         0  is NULL
+ * Return: aaaaaaaaaaaaaaaa
+ *         0  aaaaaaaaaaaaaa
  */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
