@@ -1,6 +1,5 @@
 #include "binary_trees.h"
 
-
 /**
  * bst_insert - iggggggearch Tree
  * @tree: a double poingggggggge of the BST to insert the value
@@ -10,21 +9,21 @@
  */
 bst_t *bst_insert(bst_t **tree, int value)
 {
-	bst_t *tmp = *tree;
+	bst_t *mtmp = *tree;
 	bst_t *second = NULL;
 	bst_t *new = binary_tree_node(NULL, value);
 
 	if (*tree == NULL)
 		*tree = new;
 
-	while (tmp)
+	while (mtmp)
 	{
-		second = tmp;
-		if (value < tmp->n)
-			tmp = tmp->left;
-		else if (value > tmp->n)
-			tmp = tmp->right;
-		else if (value == tmp->n)
+		second = mtmp;
+		if (value < mtmp->n)
+			mtmp = mtmp->left;
+		else if (value > mtmp->n)
+			mtmp = mtmp->right;
+		else if (value == mtmp->n)
 			return (NULL);
 	}
 
