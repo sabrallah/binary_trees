@@ -53,21 +53,21 @@ bst_t *bst_insert(bst_t **tree, int value)
  */
 avl_t *avl_insert(avl_t **tree, int value)
 {
-	int balance = 0;
+	int mbalance = 0;
 	avl_t *node = bst_insert(tree, value);
 
-	balance = binary_tree_balance(*tree);
+	mbalance = binary_tree_balance(*tree);
 
-	if (balance > 1 && value < node->left->n)
+	if (mbalance > 1 && value < node->left->n)
 		return (binary_tree_rotate_right(node));
-	if (balance < -1 && value > node->right->n)
+	if (mbalance < -1 && value > node->right->n)
 		return (binary_tree_rotate_left(node));
-	if (balance > 1 && value > node->left->n)
+	if (mbalance > 1 && value > node->left->n)
 	{
 		node->left = binary_tree_rotate_left(node->left);
 		return (binary_tree_rotate_right(node));
 	}
-	if (balance < -1 && value < node->right->n)
+	if (mbalance < -1 && value < node->right->n)
 	{
 		node->right = binary_tree_rotate_right(node->right);
 		return (binary_tree_rotate_left(node));
