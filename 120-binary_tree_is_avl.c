@@ -12,25 +12,25 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 
-	return (btia_helper(tree, INT_MIN, INT_MAX));
+	return (mbtia_helper(tree, INT_MIN, INT_MAX));
 }
 
 /**
- * btia_helper - ggggggggggggggggggg
+ * mbtia_helper - ggggggggggggggggggg
  * @tree: jjjjjjjjjjjjjjjjjjjjjjj
- * @min: hhhhhhhhhhhhhh
- * @max: rrrrrrrrrrrrrrrrrrrrr
+ * @mmin: hhhhhhhhhhhhhh
+ * @mmax: rrrrrrrrrrrrrrrrrrrrr
  *
  * Return: yyyyyyyyyyyyyyyyyy
  *         iiiiiiiiiiiiiiiiiii
  */
-int btia_helper(const binary_tree_t *tree, int min, int max)
+int mbtia_helper(const binary_tree_t *tree, int mmin, int mmax)
 {
 	int path_lef, path_rig;
 
 	if (!tree)
 		return (1);
-	if (tree->n < min || tree->n > max)
+	if (tree->n < mmin || tree->n > mmax)
 		return (0);
 
 	path_lef = tree->left ? 1 + binary_tree_height(tree->left) : 0;
@@ -39,9 +39,8 @@ int btia_helper(const binary_tree_t *tree, int min, int max)
 	if (abs(path_lef - path_rig) > 1)
 		return (0);
 
-	return (btia_helper(tree->left, min, tree->n - 1) &&
-		btia_helper(tree->right, tree->n + 1, max));
-	/* This is part of the BST check logic */
+	return (mbtia_helper(tree->left, mmin, tree->n - 1) &&
+		mbtia_helper(tree->right, tree->n + 1, mmax));
 }
 
 /**

@@ -87,7 +87,7 @@ void mbtlo_helper(const binary_tree_t *tree, void (*func)(int), size_t mlevel);
 int mbtic_helper(const binary_tree_t *tree, size_t mindex, size_t msize);
 int mbtib_helper(const binary_tree_t *tree, int mlow, int mhi);
 bst_t *bst_min_val(bst_t *root);
-int btia_helper(const binary_tree_t *tree, int low, int hi);
+int mbtia_helper(const binary_tree_t *tree, int mlow, int mhi);
 int mbtih_helper(const binary_tree_t *tree);
 void msata_helper(avl_t **root, int *array, size_t mlo, size_t mhi);
 bst_t *mreplace_with_successor(bst_t **mnode);
