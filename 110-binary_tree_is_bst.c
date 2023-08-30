@@ -15,7 +15,7 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 }
 
 /**
- * btib_helper - chfffffffffry tree is a valid Binary Search Tree
+ * mbtib_helper - chfffffffffry tree is a valid Binary Search Tree
  * @tree: a pointqqqqqqqqqqqqqqqqqk
  * @min: hhhhhhhhhhhhhhhhhhh
  * @max: zzzzzzzzzzzzzzzzzzzzz
