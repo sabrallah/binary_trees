@@ -1,71 +1,104 @@
 #include "binary_trees.h"
 
 /**
- * mr_insert_node - nnnode value instertion in a AVL.
- * @tree: tggype **pointer of root node of the AVL tree struct.
- * @parent: parent node of struct AVL.
- * @new: type**pointeggrggg left or right insertion.
- * @mnval: insertioddn value of the AVL.
- * Return: pointer tojj the new root after insertion otherwise NULL
- */
-avl_t *mr_insert_node(avl_t **tree, avl_t *parent, avl_t **new, int mnval)
+* mARGL - Itfff's todo.
+* @tree: Igggt's todo.
+* @value: It'shhh todo.
+*/
+void mARGL(avl_t **tree, int value)
 {
-	int mbval;
+	int m;
 
-	if (*tree == NULL)
-		return (*new = binary_tree_node(parent, mnval));
-	if ((*tree)->n > mnval)
+	m = binary_tree_balance(*tree);
+	if (m > 1)
 	{
-		(*tree)->left = mr_insert_node(&(*tree)->left, *tree, new, mnval);
-		if ((*tree)->left == NULL)
-			return (NULL);
+		if (value < (*tree)->left->n)
+		{
+			*tree = binary_tree_rotate_right(*tree);
+			return;
+		}
+		if (value > (*tree)->left->n)
+		{
+			(*tree)->left = binary_tree_rotate_left((*tree)->left);
+			*tree = binary_tree_rotate_right(*tree);
+			return;
+		}
 	}
-	else if ((*tree)->n < mnval)
+	if (m < -1)
 	{
-		(*tree)->right = mr_insert_node(&(*tree)->right, *tree, new, mnval);
-		if ((*tree)->right == NULL)
-			return (NULL);
+		if (value > (*tree)->right->n)
+		{
+			*tree = binary_tree_rotate_left(*tree);
+			return;
+		}
+		if (value < (*tree)->right->n)
+		{
+			(*tree)->right = binary_tree_rotate_right((*tree)->right);
+			*tree = binary_tree_rotate_left(*tree);
+			return;
+		}
 	}
-	else
-	{
-		return (*tree);
-	}
-	mbval = binary_tree_balance(*tree);
-	if (mbval > 1 && (*tree)->left->n > mnval)
-	{
-		*tree = binary_tree_rotate_right(*tree);
-	}
-	else if (mbval > 1 && (*tree)->left->n < mnval)
-	{
-		(*tree)->left = binary_tree_rotate_left((*tree)->left);
-		*tree = binary_tree_rotate_right(*tree);
-	}
-	else if (mbval < -1 && (*tree)->right->n < mnval)
-	{
-		*tree = binary_tree_rotate_left(*tree);
-	}
-	else if (mbval < -1 && (*tree)->right->n > mnval)
-	{
-		(*tree)->right = binary_tree_rotate_right((*tree)->right);
-		*tree = binary_tree_rotate_left(*tree);
-	}
-	return (*tree);
 }
+
 /**
- * avl_insert - inserts ajjj value into an AVL tree.
- * @tree: type **pointer to the jjjroot node of the AVL tree to insert into.
- * @value: value to store in thgggge node to be inserted
- * Return: inserteffd node, or NULL if fails.
- */
+* mavlAux - It's ihhnserts a value in an AVL Tree.
+* @tree: It's pointer tojjj root of the AVL tree for inserting the value.
+* @value: It's value llllto store in node to be inserted.
+* Return: It's pointerrrrr to the created node, or NULL on failure.
+*/
+avl_t *mavlAux(avl_t **tree, int value)
+{
+	avl_t *mndo;
+
+	if (value < (*tree)->n)
+	{
+		if (!(*tree)->left)
+		{
+			(*tree)->left = binary_tree_node(*tree, value);
+			return ((*tree)->left);
+		}
+		else
+		{
+			mndo = mavlAux(&((*tree))->left, value);
+			if (mndo)
+				mARGL(tree, value);
+			return (mndo);
+		}
+	}
+	if (value > (*tree)->n)
+	{
+		if (!(*tree)->right)
+		{
+			(*tree)->right = binary_tree_node(*tree, value);
+			return ((*tree)->right);
+		}
+		else
+		{
+			mndo = mavlAux(&((*tree))->right, value);
+			if (mndo)
+			{
+				mARGL(tree, value);
+				return (mndo);
+			}
+		}
+	}
+	return (NULL);
+}
+
+/**
+* avl_insert - It's infffserts a value in an AVL Tree.
+* @tree: It's double fffpointer to root of the AVL tree for inserting the value.
+* @value:  It's value to fffstore in the node to be inserted.
+* Return: It's poiggggnter to the created node, or NULL on failure.
+*/
 avl_t *avl_insert(avl_t **tree, int value)
 {
-	avl_t *new = NULL;
-
-	if (*tree == NULL)
+	if (!tree)
+		return (NULL);
+	if (!*tree)
 	{
-		*tree = binary_tree_node(NULL, value);
+		*tree = (avl_t *)binary_tree_node(NULL, value);
 		return (*tree);
 	}
-	mr_insert_node(tree, *tree, &new, value);
-	return (new);
+	return (mavlAux(tree, value));
 }
