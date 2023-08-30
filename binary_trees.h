@@ -80,7 +80,7 @@ int heap_extract(heap_t **root);
 int *heap_to_sorted_array(heap_t *heap, size_t *size);
 
 /* hhhhhhelper functions */
-int _pow_recursion(int x, int y);
+int m_pow_recursion(int m, int z);
 binary_tree_t *bta_helper(binary_tree_t *root, const binary_tree_t *first,
 			  const binary_tree_t *second);
 void btlo_helper(const binary_tree_t *tree, void (*func)(int), size_t level);
