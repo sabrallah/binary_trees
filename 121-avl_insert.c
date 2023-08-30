@@ -1,38 +1,38 @@
 #include "binary_trees.h"
 
 /**
- * mcheck_balance - checyyyks the balance of each node
+ * check_balance - checks the balance of each node
  *
- * @node: pointer touuu the node
- * @mvalue: input miivalue
- * Return: no reeturn
+ * @node: pointer to the node
+ * @value: input value
+ * Return: no return
  */
-void mcheck_balance(avl_t **node, int mvalue)
+void check_balance(avl_t **node, int value)
 {
 	int balance;
 
 	balance = binary_tree_balance(*node);
 
-	if (balance > 1 && mvalue < (*node)->left->n)
+	if (balance > 1 && value < (*node)->left->n)
 	{
 		*node = binary_tree_rotate_right(*node);
 		return;
 	}
 
-	if (balance < -1 && mvalue > (*node)->right->n)
+	if (balance < -1 && value > (*node)->right->n)
 	{
 		*node = binary_tree_rotate_left(*node);
 		return;
 	}
 
-	if (balance > 1 && mvalue > (*node)->left->n)
+	if (balance > 1 && value > (*node)->left->n)
 	{
 		(*node)->left = binary_tree_rotate_left((*node)->left);
 		*node = binary_tree_rotate_right(*node);
 		return;
 	}
 
-	if (balance < -1 && mvalue < (*node)->right->n)
+	if (balance < -1 && value < (*node)->right->n)
 	{
 		(*node)->right = binary_tree_rotate_right((*node)->right);
 		*node = binary_tree_rotate_left(*node);
@@ -41,44 +41,44 @@ void mcheck_balance(avl_t **node, int mvalue)
 }
 
 /**
- * mavl_in - checks ttif node is inserted
+ * avl_in - checks if node is inserted
  *
- * @tree: tree roeeot
- * @mvalue: node eemvalue
- * Return: pointer eeeto the new node
+ * @tree: tree root
+ * @value: node value
+ * Return: pointer to the new node
  */
-avl_t *mavl_in(avl_t **tree, int mvalue)
+avl_t *avl_in(avl_t **tree, int value)
 {
 	avl_t *node;
 
-	if (mvalue < (*tree)->n)
+	if (value < (*tree)->n)
 	{
 		if ((*tree)->left == NULL)
 		{
-			(*tree)->left = binary_tree_node(*tree, mvalue);
+			(*tree)->left = binary_tree_node(*tree, value);
 			return ((*tree)->left);
 		}
 		else
 		{
-			node = mavl_in(&((*tree)->left), mvalue);
+			node = avl_in(&((*tree)->left), value);
 			if (node)
-				mcheck_balance(tree, mvalue);
+				check_balance(tree, value);
 			return (node);
 		}
 	}
 
-	if (mvalue > (*tree)->n)
+	if (value > (*tree)->n)
 	{
 		if ((*tree)->right == NULL)
 		{
-			(*tree)->right = binary_tree_node(*tree, mvalue);
+			(*tree)->right = binary_tree_node(*tree, value);
 			return ((*tree)->right);
 		}
 		else
 		{
-			node = mavl_in(&((*tree)->right), mvalue);
+			node = avl_in(&((*tree)->right), value);
 			if (node)
-				mcheck_balance(tree, mvalue);
+				check_balance(tree, value);
 			return (node);
 		}
 	}
@@ -87,11 +87,11 @@ avl_t *mavl_in(avl_t **tree, int mvalue)
 }
 
 /**
- * avl_insert - insertsggg a mvalue in a AVL Tree
+ * avl_insert - inserts a value in a AVL Tree
  *
- * @tree: tree roggggot
- * @value: node mggvalue
- * Return: pointer toggg the new node
+ * @tree: tree root
+ * @value: node value
+ * Return: pointer to the new node
  */
 avl_t *avl_insert(avl_t **tree, int value)
 {
@@ -103,7 +103,7 @@ avl_t *avl_insert(avl_t **tree, int value)
 		return (*tree);
 	}
 
-	node = mavl_in(tree, value);
+	node = avl_in(tree, value);
 
 	return (node);
 }
