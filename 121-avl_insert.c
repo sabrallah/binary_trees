@@ -1,38 +1,38 @@
 #include "binary_trees.h"
 
 /**
- * mcheck_balance - checyyyks the mbalance of each node
+ * mcheck_balance - checyyyks the balance of each node
  *
  * @node: pointer touuu the node
  * @mvalue: input miivalue
- * Return: no reeeturn
+ * Return: no reeturn
  */
 void mcheck_balance(avl_t **node, int mvalue)
 {
-	int mbalance;
+	int balance;
 
-	mbalance = binary_tree_balance(*node);
+	balance = binary_tree_balance(*node);
 
-	if (mbalance > 1 && mvalue < (*node)->left->n)
+	if (balance > 1 && mvalue < (*node)->left->n)
 	{
 		*node = binary_tree_rotate_right(*node);
 		return;
 	}
 
-	if (mbalance < -1 && mvalue > (*node)->right->n)
+	if (balance < -1 && mvalue > (*node)->right->n)
 	{
 		*node = binary_tree_rotate_left(*node);
 		return;
 	}
 
-	if (mbalance > 1 && mvalue > (*node)->left->n)
+	if (balance > 1 && mvalue > (*node)->left->n)
 	{
 		(*node)->left = binary_tree_rotate_left((*node)->left);
 		*node = binary_tree_rotate_right(*node);
 		return;
 	}
 
-	if (mbalance < -1 && mvalue < (*node)->right->n)
+	if (balance < -1 && mvalue < (*node)->right->n)
 	{
 		(*node)->right = binary_tree_rotate_right((*node)->right);
 		*node = binary_tree_rotate_left(*node);
