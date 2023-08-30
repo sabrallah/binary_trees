@@ -92,7 +92,6 @@ int mbtih_helper(const binary_tree_t *tree);
 void msata_helper(avl_t **root, int *array, size_t mlo, size_t mhi);
 bst_t *mreplace_with_successor(bst_t **mnode);
 bst_t *mfind_node(bst_t *root, int value);
-avl_t *avl_in(avl_t **tree, int value)
-void check_balance(avl_t **node, int value)
+avl_t *mr_insert_node(avl_t **tree, avl_t *parent, avl_t **new, int mnval)
 
 #endif
