@@ -1,129 +1,129 @@
 #include "binary_trees.h"
 
 /**
- * find_node - Finds a node with a given value in a binary search tree.
- * @root: The root of the binary search tree.
- * @value: The value of the node.
- * @just like bst_search function (task 113)
- * Return: A pointer to the found node, otherwise NULL.
+ * mfind_node - ffffFinds a mnode with a given value in a binary search tree.
+ * @root: ttttThe root of the binary search tree.
+ * @value: ttttThe value of the mnode.
+ * @just lllllike bst_search function (task 113)
+ * Return: aaaaA pointer jjjto the foe, otherwise NULL.
  */
-bst_t *find_node(bst_t *root, int value)
+bst_t *mfind_node(bst_t *root, int value)
 {
-	bst_t *node = NULL;
+	bst_t *mnode = NULL;
 
 	if (root != NULL)
 	{
 		if (root->left != NULL)
-			node = root->left->parent;
-		if ((node == NULL) && (root->right != NULL))
-			node = root->right->parent;
-		while (node != NULL)
+			mnode = root->left->parent;
+		if ((mnode == NULL) && (root->right != NULL))
+			mnode = root->right->parent;
+		while (mnode != NULL)
 		{
-			if (node->n < value)
-				node = node->right;
-			else if (node->n > value)
-				node = node->left;
+			if (mnode->n < value)
+				mnode = mnode->right;
+			else if (mnode->n > value)
+				mnode = mnode->left;
 			else
 				break;
 		}
 	}
-	return (node);
+	return (mnode);
 }
 
 /**
- * replace_with_successor - Replaces a node with its inorder \
- * successor in a binary search tree.
- * @node: A pointer to the node in the binary search tree.
+ * mreplace_with_successor - rrrrrReplaces a mnode with its inorder \
+ * ssssssuccessor in a binary search tree.
+ * @mnode: aaaaaaA pointer to the mnode in the binary search tree.
  *
- * Return: A pointer to the node's inorder successor node.
+ * Return: aaaaaA pointer to the mnode's inorder successor mnode.
  */
-bst_t *replace_with_successor(bst_t **node)
+bst_t *mreplace_with_successor(bst_t **mnode)
 {
-	bst_t *new_node;
+	bst_t *mnew_node;
 
-	new_node = (*node)->right;
-	while ((new_node != NULL) && (new_node->left != NULL))
-		new_node = new_node->left;
-	if ((new_node != NULL) && (new_node == (*node)->right))
+	mnew_node = (*mnode)->right;
+	while ((mnew_node != NULL) && (mnew_node->left != NULL))
+		mnew_node = mnew_node->left;
+	if ((mnew_node != NULL) && (mnew_node == (*mnode)->right))
 	{
-		new_node->parent = (*node)->parent;
-		new_node->left = (*node)->left;
-		if ((*node)->left != NULL)
-			(*node)->left->parent = new_node;
-		if ((*node)->parent != NULL)
+		mnew_node->parent = (*mnode)->parent;
+		mnew_node->left = (*mnode)->left;
+		if ((*mnode)->left != NULL)
+			(*mnode)->left->parent = mnew_node;
+		if ((*mnode)->parent != NULL)
 		{
-			if ((*node)->parent->left == *node)
-				(*node)->parent->left = new_node;
-			if ((*node)->parent->right == *node)
-				(*node)->parent->right = new_node;
+			if ((*mnode)->parent->left == *mnode)
+				(*mnode)->parent->left = mnew_node;
+			if ((*mnode)->parent->right == *mnode)
+				(*mnode)->parent->right = mnew_node;
 		}
 	}
-	else if (new_node != NULL)
+	else if (mnew_node != NULL)
 	{
-		new_node->parent->left = new_node->right;
-		if (new_node->right != NULL)
-			new_node->right->parent = new_node->parent;
-		new_node->parent = (*node)->parent;
-		new_node->left = (*node)->left;
-		new_node->right = (*node)->right;
-		(*node)->left->parent = new_node;
-		(*node)->right->parent = new_node;
-		if ((*node)->parent != NULL)
+		mnew_node->parent->left = mnew_node->right;
+		if (mnew_node->right != NULL)
+			mnew_node->right->parent = mnew_node->parent;
+		mnew_node->parent = (*mnode)->parent;
+		mnew_node->left = (*mnode)->left;
+		mnew_node->right = (*mnode)->right;
+		(*mnode)->left->parent = mnew_node;
+		(*mnode)->right->parent = mnew_node;
+		if ((*mnode)->parent != NULL)
 		{
-			if ((*node)->parent->left == *node)
-				(*node)->parent->left = new_node;
-			if ((*node)->parent->right == *node)
-				(*node)->parent->right = new_node;
+			if ((*mnode)->parent->left == *mnode)
+				(*mnode)->parent->left = mnew_node;
+			if ((*mnode)->parent->right == *mnode)
+				(*mnode)->parent->right = mnew_node;
 		}
 	}
-	return (new_node);
+	return (mnew_node);
 }
 
 /**
- * bst_remove - Removes a node with a given value in a binary search tree.
+ * bst_remove - Removes a mnode with a given value in a binary search tree.
  * @root: The binary search tree.
- * @value: The value of the node.
+ * @value: The value of the mnode.
  *
- * Return: A pointer to the tree's root node, otherwise NULL.
+ * Return: A pointer to the tree's root mnode, otherwise NULL.
  */
 bst_t *bst_remove(bst_t *root, int value)
 {
-	bst_t *node = NULL, *new_root = root, *new_node = NULL;
+	bst_t *mnode = NULL, *mnew_root = root, *mnew_node = NULL;
 
-	if (new_root != NULL)
+	if (mnew_root != NULL)
 	{
-		node = find_node(root, value);
-		if ((node != NULL) && (node->n == value))
+		mnode = mfind_node(root, value);
+		if ((mnode != NULL) && (mnode->n == value))
 		{
-			if ((node->left == NULL) && (node->right == NULL))
+			if ((mnode->left == NULL) && (mnode->right == NULL))
 			{
-				if (node->parent != NULL)
+				if (mnode->parent != NULL)
 				{
-					if (node->parent->left == node)
-						node->parent->left = NULL;
-					if (node->parent->right == node)
-						node->parent->right = NULL;
+					if (mnode->parent->left == mnode)
+						mnode->parent->left = NULL;
+					if (mnode->parent->right == mnode)
+						mnode->parent->right = NULL;
 				}
 			}
-			else if ((node->left != NULL) ^ (node->right != NULL))
+			else if ((mnode->left != NULL) ^ (mnode->right != NULL))
 			{
-				new_node = (node->left != NULL ? node->left : node->right);
-				if (node->parent != NULL)
+				mnew_node = (mnode->left != NULL ? mnode->left : mnode->right);
+				if (mnode->parent != NULL)
 				{
-					if (node->parent->left == node)
-						node->parent->left = new_node;
-					else if (node->parent->right == node)
-						node->parent->right = new_node;
+					if (mnode->parent->left == mnode)
+						mnode->parent->left = mnew_node;
+					else if (mnode->parent->right == mnode)
+						mnode->parent->right = mnew_node;
 				}
-				new_node->parent = node->parent;
+				mnew_node->parent = mnode->parent;
 			}
 			else
 			{
-				new_node = replace_with_successor(&node);
+				mnew_node = mreplace_with_successor(&mnode);
 			}
-			new_root = (node->parent == NULL ? new_node : root);
-			free(node);
+			mnew_root = (mnode->parent == NULL ? mnew_node : root);
+			free(mnode);
 		}
 	}
-	return (new_root);
+	return (mnew_root);
 }
