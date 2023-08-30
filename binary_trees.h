@@ -83,7 +83,7 @@ int *heap_to_sorted_array(heap_t *heap, size_t *size);
 int m_pow_recursion(int m, int z);
 binary_tree_t *bta_helper(binary_tree_t *root, const binary_tree_t *first,
 			  const binary_tree_t *second);
-void btlo_helper(const binary_tree_t *tree, void (*func)(int), size_t level);
+void mbtlo_helper(const binary_tree_t *tree, void (*func)(int), size_t mlevel);
 int mbtic_helper(const binary_tree_t *tree, size_t mindex, size_t msize);
 int btib_helper(const binary_tree_t *tree, int low, int hi);
 bst_t *bst_min_val(bst_t *root);
