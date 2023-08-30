@@ -90,5 +90,7 @@ bst_t *bst_min_val(bst_t *root);
 int btia_helper(const binary_tree_t *tree, int low, int hi);
 int mbtih_helper(const binary_tree_t *tree);
 void msata_helper(avl_t **root, int *array, size_t mlo, size_t mhi);
+bst_t *replace_with_successor(bst_t **node);
+bst_t *find_node(bst_t *root, int value);
 
 #endif
