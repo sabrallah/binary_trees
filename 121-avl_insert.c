@@ -10,21 +10,21 @@
  */
 bst_t *bst_insert(bst_t **tree, int value)
 {
-	bst_t *mtmp = *tree;
+	bst_t *tmp = *tree;
 	bst_t *second = NULL;
 	bst_t *new = binary_tree_node(NULL, value);
 
 	if (*tree == NULL)
 		*tree = new;
 
-	while (mtmp)
+	while (tmp)
 	{
-		second = mtmp;
-		if (value < mtmp->n)
-			mtmp = mtmp->left;
-		else if (value > mtmp->n)
-			mtmp = mtmp->right;
-		else if (value == mtmp->n)
+		second = tmp;
+		if (value < tmp->n)
+			tmp = tmp->left;
+		else if (value > tmp->n)
+			tmp = tmp->right;
+		else if (value == tmp->n)
 			return (NULL);
 	}
 
