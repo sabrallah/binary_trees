@@ -95,5 +95,11 @@ bst_t *mfind_node(bst_t *root, int value);
 avl_t *mr_insert_node(avl_t **tree, avl_t *parent, avl_t **new, int mnval)
 void mARGL(avl_t **tree, int value);
 avl_t *mavlAux(avl_t **tree, int value);
+void menqueue_item_4(heap_t **mqueue_h, heap_t **mqueue_t,
+	int *m, void *mitem);
+heap_t *mdequeue_item_4(heap_t **mqueue_h,
+	heap_t **mqueue_t, int *m);
+heap_t *mget_last_heap_node(const heap_t *root);
+void mswap_tree_node_with_parent_1(heap_t **mnode, heap_t **root);
 
 #endif
